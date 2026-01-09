@@ -628,27 +628,11 @@ FLINT_DEFINE_BINARY_EXPR_COND2(divrem_basecase_op, rdetail::fmpz_mod_polyxx_pair
         to.template get<0>()._poly(), to.template get<1>()._poly(),
         e1._poly(), e2._poly(), e1._ctx()))
 
-FLINT_DEFINE_BINARY_EXPR_COND2(divrem_divconquer_op, rdetail::fmpz_mod_polyxx_pair,
-    FMPZ_MOD_POLYXX_COND_S, FMPZ_MOD_POLYXX_COND_S,
-    fmpz_mod_poly_divrem_divconquer(
-        to.template get<0>()._poly(), to.template get<1>()._poly(),
-        e1._poly(), e2._poly(), e1._ctx()))
-
-FLINT_DEFINE_BINARY_EXPR_COND2(divrem_op, rdetail::fmpz_mod_polyxx_pair,
-    FMPZ_MOD_POLYXX_COND_S, FMPZ_MOD_POLYXX_COND_S,
-    fmpz_mod_poly_divrem_divconquer(
-        to.template get<0>()._poly(), to.template get<1>()._poly(),
-        e1._poly(), e2._poly(), e1._ctx()))
-
 FLINT_DEFINE_BINARY_EXPR_COND2(divrem_f_op, rdetail::fmpz_mod_poly_divrem_f_rt,
     FMPZ_MOD_POLYXX_COND_S, FMPZ_MOD_POLYXX_COND_S,
     fmpz_mod_poly_divrem_f(
         to.template get<0>()._fmpz(), to.template get<1>()._poly(),
         to.template get<2>()._poly(), e1._poly(), e2._poly(), e1._ctx()))
-
-FLINT_DEFINE_BINARY_EXPR_COND2(div_basecase_op, fmpz_mod_polyxx,
-    FMPZ_MOD_POLYXX_COND_S, FMPZ_MOD_POLYXX_COND_S,
-    fmpz_mod_poly_div_basecase(to._poly(), e1._poly(), e2._poly(), to._ctx()))
 
 FLINT_DEFINE_BINARY_EXPR_COND2(rem_basecase_op, fmpz_mod_polyxx,
     FMPZ_MOD_POLYXX_COND_S, FMPZ_MOD_POLYXX_COND_S,
@@ -661,10 +645,6 @@ FLINT_DEFINE_BINARY_EXPR_COND2(inv_series_newton_op, fmpz_mod_polyxx,
 FLINT_DEFINE_BINARY_EXPR_COND2(gcd_op, fmpz_mod_polyxx,
     FMPZ_MOD_POLYXX_COND_S, FMPZ_MOD_POLYXX_COND_S,
     fmpz_mod_poly_gcd(to._poly(), e1._poly(), e2._poly(), to._ctx()))
-
-FLINT_DEFINE_BINARY_EXPR_COND2(gcd_euclidean_op, fmpz_mod_polyxx,
-    FMPZ_MOD_POLYXX_COND_S, FMPZ_MOD_POLYXX_COND_S,
-    fmpz_mod_poly_gcd_euclidean(to._poly(), e1._poly(), e2._poly(), to._ctx()))
 
 namespace rdetail {
 typedef make_ltuple<mp::make_tuple<

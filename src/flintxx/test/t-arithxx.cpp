@@ -26,15 +26,6 @@ test_stirling()
     fmpz_vecxx v1(func##_vec(n, k).evaluate() /* test temporary alloc */); \
     for(slong i = 0;i < v1.size();++i) \
         tassert(v1[i] == func(n, i)); \
-    tassert(func##_vec_next(func##_vec(n, k), n+1).size() == k); \
-    fmpz_vecxx v2(func##_vec_next(v1, n+1)); \
-    for(slong i = 0;i < v2.size();++i) \
-        tassert(v2[i] == func(n+1, i)); \
-    fmpz_vecxx v3(func##_vec(n, n+1)); \
-    fmpz_vecxx v4(func##_vec_next(v3, n+1)); \
-    tassert(v4.size() == n+2 && v3.size() == n+1); \
-    for(slong i = 0;i < v4.size();++i) \
-        tassert(v4[i] == func(n+1, i)); \
     tassert(matfunc(n, k).rows() == n && matfunc(n, k).cols() == k); \
     fmpz_matxx M(matfunc(n, k).evaluate() /* test temporaries */); \
     for(slong i = 0;i < M.rows();++i) \

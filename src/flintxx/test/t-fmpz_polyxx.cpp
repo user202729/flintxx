@@ -14,6 +14,7 @@
 #include <string>
 
 #include "fmpz_polyxx.h"
+#include "fmpz_poly_factorxx.h"
 #include "nmod_polyxx.h"
 
 #include "flintxx/test/helpers.h"

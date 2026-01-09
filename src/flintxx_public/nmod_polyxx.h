@@ -757,10 +757,6 @@ NMOD_POLYXX_DEFINE_SERIES_F(sinh)
 NMOD_POLYXX_DEFINE_SERIES_F(cosh)
 NMOD_POLYXX_DEFINE_SERIES_F(tanh)
 
-FLINT_DEFINE_BINARY_EXPR_COND2(exp_series_basecase_op, nmod_polyxx,
-        NMOD_POLYXX_COND_S, traits::fits_into_slong,
-        nmod_poly_exp_series_basecase(to._poly(), e1._poly(), e2))
-
 FLINT_DEFINE_THREEARY_EXPR_COND3(log_series_monomial_op, nmod_polyxx,
         NMODXX_COND_S, traits::is_unsigned_integer, traits::fits_into_slong,
         nmod_poly_log_series_monomial_ui(to._poly(), e1._limb(), e2, e3))

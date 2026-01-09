@@ -81,9 +81,6 @@ ARITHXX_DEFINE_BINOP(stirling_number_2, fmpzxx, at::slong, at::slong)
 ARITHXX_DEFINE_BINOP(stirling_number_1u_vec, fmpz_vecxx, at::slong, at::slong)
 ARITHXX_DEFINE_BINOP(stirling_number_1_vec, fmpz_vecxx, at::slong, at::slong)
 ARITHXX_DEFINE_BINOP(stirling_number_2_vec, fmpz_vecxx, at::slong, at::slong)
-FLINT_DEFINE_BINOP(stirling_number_1u_vec_next)
-FLINT_DEFINE_BINOP(stirling_number_1_vec_next)
-FLINT_DEFINE_BINOP(stirling_number_2_vec_next)
 FLINT_DEFINE_BINOP(stirling_matrix_1u)
 FLINT_DEFINE_BINOP(stirling_matrix_1)
 FLINT_DEFINE_BINOP(stirling_matrix_2)
@@ -99,23 +96,6 @@ template<> struct outsize<operations::stirling_number_1_vec_op>
     : outsize<operations::stirling_number_1u_vec_op> { };
 template<> struct outsize<operations::stirling_number_2_vec_op>
     : outsize<operations::stirling_number_1u_vec_op> { };
-
-template<>
-struct outsize<operations::stirling_number_1u_vec_next_op>
-{
-    template<class Expr>
-    static unsigned get(const Expr& e)
-    {
-        slong r = e._data().first().size();
-        if(r == e._data().second())
-            return r + 1;
-        return r;
-    }
-};
-template<> struct outsize<operations::stirling_number_1_vec_next_op>
-    : outsize<operations::stirling_number_1u_vec_next_op> { };
-template<> struct outsize<operations::stirling_number_2_vec_next_op>
-    : outsize<operations::stirling_number_1u_vec_next_op> { };
 } // vectors
 
 namespace matrices {
@@ -134,19 +114,6 @@ template<> struct outsize<operations::stirling_matrix_2_op>
 } // matrices
 
 namespace rules {
-FLINT_DEFINE_BINARY_EXPR_COND2(stirling_number_1u_vec_next_op, fmpz_vecxx,
-        FMPZ_VECXX_COND_S, at::slong,
-        arith_stirling_number_1u_vec_next(to._array(), e1._array(), e2,
-            e1.size() + (e1.size() == e2)))
-FLINT_DEFINE_BINARY_EXPR_COND2(stirling_number_1_vec_next_op, fmpz_vecxx,
-        FMPZ_VECXX_COND_S, at::slong,
-        arith_stirling_number_1_vec_next(to._array(), e1._array(), e2,
-            e1.size() + (e1.size() == e2)))
-FLINT_DEFINE_BINARY_EXPR_COND2(stirling_number_2_vec_next_op, fmpz_vecxx,
-        FMPZ_VECXX_COND_S, at::slong,
-        arith_stirling_number_2_vec_next(to._array(), e1._array(), e2,
-            e1.size() + (e1.size() == e2)))
-
 FLINT_DEFINE_BINARY_EXPR_COND2(stirling_matrix_1u_op, fmpz_matxx,
         at::slong, at::slong, arith_stirling_matrix_1u(to._mat()))
 FLINT_DEFINE_BINARY_EXPR_COND2(stirling_matrix_1_op, fmpz_matxx,
