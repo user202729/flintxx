@@ -32,8 +32,9 @@ int main(void)
 
     fmpzxx m(17);
     m = m.pow(26u);
+    fmpz_modxx_ctx ctx(m);
 
-    fmpz_mod_polyxx A(m), B(m);
+    fmpz_mod_polyxx A(ctx), B(ctx);
 
     A.set_coeff(3, 5);
     A.set_coeff(4, 4);
@@ -51,9 +52,9 @@ int main(void)
 
     fmpz_mod_polyxx r(A.pow(3u) * fmpzxx(4) + B.pow(2u) * fmpzxx(27));
 
-    fmpz_mod_poly_vecxx b(N + 1, m);
+    fmpz_mod_poly_vecxx b(N + 1, ctx);
 
-    fmpz_mod_polyxx t = fmpz_mod_polyxx::randtest(m, state, n + 1);
+    fmpz_mod_polyxx t = fmpz_mod_polyxx::randtest(ctx, state, n + 1);
 
     flint_printf("Radix conversion\n");
     flint_printf("----------------\n");

@@ -49,7 +49,7 @@ public:
     static permxx randtest(slong n, frandxx& state)
         {permxx res(n);res.set_randtest(state);return res;}
 
-    void set_one() {_perm_set_one(_data(), size());}
+    void set_one() {_perm_one(_data(), size());}
     int set_randtest(frandxx& state)
         {return _perm_randtest(_data(), size(), state._data());}
 
@@ -93,7 +93,7 @@ template<class T> struct is_permxx : mp::equal_types<T, permxx> { };
 
 inline int print(const permxx& p)
 {
-    return _perm_print(p._data(), p.size());
+    return flint_printf("%{slong*}", p._data(), p.size());
 }
 } // flint
 

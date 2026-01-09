@@ -14,6 +14,7 @@
 
 #include <cstdlib>
 #include <vector>
+#include "gmp.h"
 
 #include "flintxx/evaluation_tools.h"
 #include "flintxx/expression.h"

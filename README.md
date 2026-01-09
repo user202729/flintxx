@@ -12,6 +12,10 @@ syntax. FLINTXX is a set of wrapper C++ classes, together termed flintxx,
 which provide such an object oriented syntax.
 In general, flintxx strives to behave just like the underlying FLINT C, see the documentation for some exceptions.
 
+## Usage
+This is a header-only library.
+It suffices to add `src/` and `src/flintxx_public/` to the include path.
+
 ## Authors
 The author of this C++ wrapper is Tom Bachmann.
 This was originally part of [FLINT](https://github.com/flintlib/flint)

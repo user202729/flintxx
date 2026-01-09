@@ -21,6 +21,7 @@
 #ifndef FOO_H
 #define FOO_H
 #include <stdio.h>
+#include "flint.h"
 
 extern "C" { // usually only #ifdef __cplusplus etc
 typedef slong foo;
